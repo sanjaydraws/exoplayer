@@ -6,6 +6,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.sanjay.exo_player.VideoData
+import com.sanjay.exo_player.bindingAdapter.PlayerViewExtension.Companion.loadVideo
+import com.sanjay.exo_player.bindingAdapter.PlayerViewExtension.Companion.releaseRecycledPlayers
 import com.sanjay.exo_player.databinding.ItemVideoLayoutBinding
 
 class VideosAdapter (var videosList: ArrayList<VideoData>) :
@@ -23,8 +25,14 @@ class VideosAdapter (var videosList: ArrayList<VideoData>) :
     /*called every when scrolled 4 items */
     override fun onViewRecycled(holder: VideoViewHolder) {
         val position = holder.absoluteAdapterPosition
+        releaseRecycledPlayers(position)
         Log.d("TAG", "onViewRecycled: $position  ${videosList[position].title}")
         super.onViewRecycled(holder)
+    }
+
+    override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
+        Log.d("TAG", "onAttachedToRecyclerView: $recyclerView")
+        super.onAttachedToRecyclerView(recyclerView)
     }
 
     override fun onBindViewHolder(holder: VideoViewHolder, position: Int) {
@@ -37,9 +45,13 @@ class VideosAdapter (var videosList: ArrayList<VideoData>) :
     }
 
 
-    inner class VideoViewHolder(val binding: ItemVideoLayoutBinding): RecyclerView.ViewHolder(binding.root) {
+    inner class VideoViewHolder(private val binding: ItemVideoLayoutBinding): RecyclerView.ViewHolder(binding.root) {
         fun setupData(videoData: VideoData) {
             binding.title.text = videoData.title
+            binding.videoPlayerView.loadVideo(videoData.url, item_index = layoutPosition)
+
+
         }
     }
+
 }
