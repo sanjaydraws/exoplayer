@@ -22,8 +22,8 @@ class MainActivity : AppCompatActivity() {
             executePendingBindings()
             lifecycleOwner = this@MainActivity
         }
-        binding?.rcVideosPlayer?.adapter = mVideosAdapter
-        mVideosAdapter.updatedata(videosList = getVideosList())
+//        binding?.rcVideosPlayer?.adapter = mVideosAdapter
+//        mVideosAdapter.updatedata(videosList = getVideosList())
 
         scrollListener = object : RecyclerViewScrollListener() {
             override fun onItemIsFirstVisibleItem(index: Int) {
@@ -36,7 +36,7 @@ class MainActivity : AppCompatActivity() {
             }
 
         }
-        binding?.rcVideosPlayer?.addOnScrollListener(scrollListener)
+//        binding?.rcVideosPlayer?.addOnScrollListener(scrollListener)
 
 
 

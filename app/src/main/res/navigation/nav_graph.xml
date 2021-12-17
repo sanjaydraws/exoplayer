@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.sanjay.exo_player.ui.fragments.HomeFragment"
+        android:label="Home Fragment"
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_homeFragment_to_facebookPlayerFragment"
+            app:destination="@id/facebookPlayerFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_tikTokPlayerFragment"
+            app:destination="@id/tikTokPlayerFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_instagramScreenFragment"
+            app:destination="@id/instagramScreenFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/facebookPlayerFragment"
+        android:name="com.sanjay.exo_player.ui.fragments.FacebookFragment"
+        android:label="FacebookPlayerFragment" />
+    <fragment
+        android:id="@+id/tikTokPlayerFragment"
+        android:name="com.sanjay.exo_player.ui.fragments.TikTokFragment"
+        android:label="TikTokPlayerFragment" />
+    <fragment
+        android:id="@+id/instagramScreenFragment"
+        android:name="com.sanjay.exo_player.ui.fragments.InstagramFragment"
+        android:label="InstagramScreenFragment" />
+</navigation>
