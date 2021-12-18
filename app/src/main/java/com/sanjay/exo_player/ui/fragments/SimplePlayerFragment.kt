@@ -81,16 +81,16 @@ class SimplePlayerFragment : BaseFragment() {
 
         scrollListener = object : RecyclerViewScrollListener() {
             override fun onItemIsFirstVisibleItem(index: Int) {
-                Log.d("scrollListener", index.toString())
                 // play just visible item
                 if (index != -1) {
                     PlayerViewExtension.pausePreviousPlayer(index)
+                    Log.d("SCROLL_LISTENER", "onItemIsFirstVisibleItem: $index")
 //                    PlayerViewExtension.playIndexThenPausePreviousPlayer(index)
                 }
             }
 
         }
-//        binding?.rcVideosPlayer?.addOnScrollListener(scrollListener)
+        binding?.rcVideosPlayer?.addOnScrollListener(scrollListener)
 
     }
 
