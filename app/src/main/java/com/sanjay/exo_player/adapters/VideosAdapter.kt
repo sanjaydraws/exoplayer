@@ -48,7 +48,7 @@ class VideosAdapter (var videosList: ArrayList<VideoData>) :
     inner class VideoViewHolder(private val binding: ItemVideoLayoutBinding): RecyclerView.ViewHolder(binding.root) {
         fun setupData(videoData: VideoData) {
             binding.title.text = videoData.title
-            binding.videoPlayerView.loadVideo("videoData.url", item_index = layoutPosition)
+            binding.videoPlayerView.loadVideo(videoData.url, item_index = layoutPosition)
 
 
         }

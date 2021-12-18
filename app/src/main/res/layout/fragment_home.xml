@@ -45,10 +45,18 @@
             android:layout_height="wrap_content"
             android:text="Instagram Screen"
             android:backgroundTint="@color/black"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tiktok_button" />
-
+        <Button
+            android:id="@+id/simple_exo_player"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Simple exo player"
+            android:backgroundTint="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintVertical_bias="0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/instagram_button" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

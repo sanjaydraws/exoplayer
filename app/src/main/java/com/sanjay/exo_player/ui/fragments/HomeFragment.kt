@@ -37,6 +37,7 @@ class HomeFragment : Fragment() {
         // Inflate the layout for this fragment
         binding = FragmentHomeBinding.inflate(layoutInflater, container, false)
         return binding?.root
+
     }
 
     companion object {
@@ -51,20 +52,19 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        // go to faceHomePage
         binding?.facebookButton?.setOnClickListener {
-            findNavController()?.navigate(R.id.action_homeFragment_to_facebookPlayerFragment)
+            findNavController().navigate(R.id.action_homeFragment_to_facebookPlayerFragment)
         }
 
-        // go to tiktok home page
         binding?.tiktokButton?.setOnClickListener {
-            findNavController()?.navigate(R.id.action_homeFragment_to_tikTokPlayerFragment)
+            findNavController().navigate(R.id.action_homeFragment_to_tikTokPlayerFragment)
         }
 
-        // go to instagram home page
         binding?.instagramButton?.setOnClickListener {
             findNavController().navigate(R.id.action_homeFragment_to_instagramScreenFragment)
         }
-
+        binding?.simpleExoPlayer?.setOnClickListener {
+            findNavController().navigate(R.id.action_homeFragment_to_simplePlayerFragment)
+        }
     }
 }
