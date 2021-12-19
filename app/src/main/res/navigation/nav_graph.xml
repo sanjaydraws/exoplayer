@@ -22,6 +22,9 @@
         <action
             android:id="@+id/action_homeFragment_to_simplePlayerFragment"
             app:destination="@id/simplePlayerFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_igSuggestedReelsFragment"
+            app:destination="@id/igSuggestedReelsFragment" />
     </fragment>
     <fragment
         android:id="@+id/facebookPlayerFragment"
@@ -39,4 +42,8 @@
         android:id="@+id/simplePlayerFragment"
         android:name="com.sanjay.exo_player.ui.fragments.SimplePlayerFragment"
         android:label="SimplePlayerFragment" />
+    <fragment
+        android:id="@+id/igSuggestedReelsFragment"
+        android:name="com.sanjay.exo_player.ui.fragments.InstaSuggestedReelsFragment"
+        android:label="InstaSuggestedReelsFragment" />
 </navigation>

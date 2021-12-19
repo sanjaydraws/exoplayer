@@ -8,34 +8,27 @@ import android.view.View
 import android.view.ViewGroup
 import com.sanjay.exo_player.R
 import com.sanjay.exo_player.VideoData
+import com.sanjay.exo_player.adapters.InstaSuggestedVideosAdapter
 import com.sanjay.exo_player.adapters.RecyclerViewScrollListener
 import com.sanjay.exo_player.adapters.VideosAdapter
 import com.sanjay.exo_player.bindingAdapter.PlayerViewExtension
-import com.sanjay.exo_player.databinding.FragmentHomeBinding
+import com.sanjay.exo_player.databinding.FragmentInstaSuggestedReelsBinding
 import com.sanjay.exo_player.databinding.FragmentSimplePlayerBinding
 import com.sanjay.exo_player.ui.fragments.base.BaseFragment
 
-class SimplePlayerFragment : BaseFragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    var binding: FragmentSimplePlayerBinding? = null
-    val mVideosAdapter by lazy {
-        VideosAdapter(ArrayList())
-    }
+/**
+ * A simple [Fragment] subclass.
+ * Use the [InstaSuggestedReelsFragment.newInstance] factory method to
+ * create an instance of this fragment.
+ */
+class InstaSuggestedReelsFragment : BaseFragment() {
     private lateinit var scrollListener: RecyclerViewScrollListener
-
-    companion object {
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            SimplePlayerFragment().apply {
-                arguments = Bundle().apply {
-
-                }
-            }
+    private val mSuggestedVideosAdapter by lazy {
+        InstaSuggestedVideosAdapter(ArrayList())
     }
 
+    var binding:FragmentInstaSuggestedReelsBinding? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -47,18 +40,26 @@ class SimplePlayerFragment : BaseFragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        binding = FragmentSimplePlayerBinding.inflate(layoutInflater, container, false)
+        binding = FragmentInstaSuggestedReelsBinding.inflate(layoutInflater, container, false)
         binding?.apply {
-            lifecycleOwner =this@SimplePlayerFragment
+            lifecycleOwner = this@InstaSuggestedReelsFragment
             executePendingBindings()
         }
         return binding?.root
     }
 
+    companion object {
+        @JvmStatic
+        fun newInstance(param1: String, param2: String) =
+            InstaSuggestedReelsFragment().apply {
+                arguments = Bundle().apply {
 
+                }
+            }
+    }
     override fun initViews(view: View) {
-        binding?.rcVideosPlayer?.adapter = mVideosAdapter
-        mVideosAdapter.updatedata(videosList = getVideosList())
+        binding?.rcVideosPlayer?.adapter = mSuggestedVideosAdapter
+        mSuggestedVideosAdapter.updatedata(videosList = getVideosList())
 
     }
 
@@ -73,9 +74,9 @@ class SimplePlayerFragment : BaseFragment() {
 //                    PlayerViewExtension.playIndexThenPausePreviousPlayer(index)
                 }
             }
-
         }
         binding?.rcVideosPlayer?.addOnScrollListener(scrollListener)
+
 
     }
 
@@ -83,9 +84,7 @@ class SimplePlayerFragment : BaseFragment() {
     }
 
     override fun loadData() {
-
     }
-
     fun getVideosList():ArrayList<VideoData>{
         val l:ArrayList<VideoData> = ArrayList()
         l.add(VideoData(0, title = "Spiderman", url = "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4", thumbnail = ""))

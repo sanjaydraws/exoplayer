@@ -66,5 +66,8 @@ class HomeFragment : Fragment() {
         binding?.simpleExoPlayer?.setOnClickListener {
             findNavController().navigate(R.id.action_homeFragment_to_simplePlayerFragment)
         }
+        binding?.igSuggestedReels?.setOnClickListener {
+            findNavController().navigate(R.id.action_homeFragment_to_igSuggestedReelsFragment)
+        }
     }
 }

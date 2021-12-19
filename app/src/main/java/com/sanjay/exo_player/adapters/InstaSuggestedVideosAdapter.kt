@@ -1,5 +1,6 @@
 package com.sanjay.exo_player.adapters
 
+
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -8,13 +9,14 @@ import androidx.recyclerview.widget.RecyclerView
 import com.sanjay.exo_player.VideoData
 import com.sanjay.exo_player.bindingAdapter.PlayerViewExtension.Companion.loadVideo
 import com.sanjay.exo_player.bindingAdapter.PlayerViewExtension.Companion.releaseRecycledPlayers
+import com.sanjay.exo_player.databinding.ItemInstagramSuggestedReelsBinding
 import com.sanjay.exo_player.databinding.ItemVideoLayoutBinding
 
-class VideosAdapter (var videosList: ArrayList<VideoData>) :
-    RecyclerView.Adapter<VideosAdapter.VideoViewHolder>(){
+class InstaSuggestedVideosAdapter (var videosList: ArrayList<VideoData>) :
+    RecyclerView.Adapter<InstaSuggestedVideosAdapter.VideoViewHolder>(){
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VideoViewHolder {
         val inflater = LayoutInflater.from(parent.context)
-        val binding =  ItemVideoLayoutBinding.inflate(inflater,parent,false)
+        val binding =  ItemInstagramSuggestedReelsBinding.inflate(inflater,parent,false)
         return  VideoViewHolder(binding)
     }
     fun updatedata(videosList:ArrayList<VideoData>){
@@ -45,9 +47,8 @@ class VideosAdapter (var videosList: ArrayList<VideoData>) :
     }
 
 
-    inner class VideoViewHolder(private val binding: ItemVideoLayoutBinding): RecyclerView.ViewHolder(binding.root) {
+    inner class VideoViewHolder(private val binding: ItemInstagramSuggestedReelsBinding): RecyclerView.ViewHolder(binding.root) {
         fun setupData(videoData: VideoData) {
-//            binding.title.text = videoData.title
             binding.videoPlayerView.loadVideo("http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4", item_index = layoutPosition)
 
 
