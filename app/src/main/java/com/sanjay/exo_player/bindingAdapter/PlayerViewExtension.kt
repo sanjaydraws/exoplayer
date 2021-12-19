@@ -1,6 +1,7 @@
 package com.sanjay.exo_player.bindingAdapter
 
 import android.content.Context
+import android.net.Uri
 import android.util.Log
 import android.widget.Toast
 import androidx.databinding.BindingAdapter
@@ -73,8 +74,9 @@ class PlayerViewExtension {
             playersMap[index]?.stop()
         }
 
-        // call when scroll to pause any playing player
-        fun pauseCurrentPlayingVideo(){
+        /** call when scroll to pause any playing player
+        */
+        private fun pauseCurrentPlayingVideo(){
             Log.d("VIDEO_TAG", "pauseCurrentPlayingVideo: currentPlayingVideo $currentPlayingVideo")
             if (currentPlayingVideo != null){
                 Log.d("VIDEO_TAG", "pauseCurrentPlayingVideo: currentPlayingVideo ${currentPlayingVideo?.second?.isPlaying}")
@@ -124,7 +126,11 @@ class PlayerViewExtension {
             }
             try{
 
+                val mediaItem1 = MediaItem.Builder()
+                    .setUri(videoUrl)
+                    .setAdsConfiguration(MediaItem.AdsConfiguration.Builder(Uri.parse("http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4")).build()).build()
                 val mediaItem = MediaItem.fromUri(videoUrl)
+                simpleExoplayer.addMediaItem(mediaItem1)
                 simpleExoplayer?.addMediaItem(mediaItem) // add media item
                 // When changing track, retain the latest frame instead of showing a black screen
                 setKeepContentOnPlayerReset(true)

@@ -49,7 +49,7 @@ class InstaSuggestedVideosAdapter (var videosList: ArrayList<VideoData>) :
 
     inner class VideoViewHolder(private val binding: ItemInstagramSuggestedReelsBinding): RecyclerView.ViewHolder(binding.root) {
         fun setupData(videoData: VideoData) {
-            binding.videoPlayerView.loadVideo("http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4", item_index = layoutPosition)
+            binding.videoPlayerView.loadVideo(videoUrl = videoData.url, item_index = layoutPosition)
 
 
         }
