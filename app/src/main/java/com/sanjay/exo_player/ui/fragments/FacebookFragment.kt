@@ -1,13 +1,20 @@
 package com.sanjay.exo_player.ui.fragments
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.viewpager.widget.ViewPager
 import com.sanjay.exo_player.R
 import com.sanjay.exo_player.VideoData
+import com.sanjay.exo_player.adapters.FacebookVideoPagerAdapter
+import com.sanjay.exo_player.adapters.FbVideoAdapter
+import com.sanjay.exo_player.adapters.InstaSuggestedVideosAdapter
+import com.sanjay.exo_player.adapters.RecyclerViewScrollListener
+import com.sanjay.exo_player.bindingAdapter.PlayerViewExtension
 import com.sanjay.exo_player.databinding.FragmentFacebookBinding
 import com.sanjay.exo_player.databinding.FragmentHomeBinding
 import com.sanjay.exo_player.ui.fragments.base.BaseFragment
@@ -19,7 +26,12 @@ import com.sanjay.exo_player.ui.fragments.base.BaseFragment
  */
 class FacebookFragment : BaseFragment() {
     var binding:FragmentFacebookBinding? = null
+    private lateinit var scrollListener: RecyclerViewScrollListener
 
+
+    private val mFbVideosAdapter by lazy {
+        FbVideoAdapter(ArrayList())
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -27,7 +39,6 @@ class FacebookFragment : BaseFragment() {
 //            param2 = it.getString(ARG_PARAM2)
         }
     }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -51,10 +62,23 @@ class FacebookFragment : BaseFragment() {
             }
     }
     override fun initViews(view: View) {
-        TODO("Not yet implemented")
+        binding?.viewPager?.adapter = mFbVideosAdapter
+        mFbVideosAdapter.updatedata(videosList = getVideosList())
     }
 
     override fun setupListener() {
+        scrollListener = object : RecyclerViewScrollListener() {
+            override fun onItemIsFirstVisibleItem(index: Int) {
+                // play just visible item
+                if (index != -1) {
+                    PlayerViewExtension.pausePreviousPlayer(index)
+                    Log.d("SCROLL_LISTENER", "onItemIsFirstVisibleItem: $index")
+//                    PlayerViewExtension.playIndexThenPausePreviousPlayer(index)
+                }
+            }
+        }
+//        binding?.viewPager?.addOnScrollListener(scrollListener)
+
         var viewPagerPageChangeListener :ViewPager.OnPageChangeListener = object : ViewPager.OnPageChangeListener{
             override fun onPageScrolled(
                 position: Int,
@@ -65,7 +89,7 @@ class FacebookFragment : BaseFragment() {
             }
 
             override fun onPageSelected(position: Int) {
-
+                Toast.makeText(context, "$position", Toast.LENGTH_LONG).show()
             }
 
             override fun onPageScrollStateChanged(state: Int) {
@@ -75,11 +99,9 @@ class FacebookFragment : BaseFragment() {
     }
 
     override fun initObservers() {
-        TODO("Not yet implemented")
     }
 
     override fun loadData() {
-        TODO("Not yet implemented")
     }
 
 
@@ -99,5 +121,13 @@ class FacebookFragment : BaseFragment() {
         return l
     }
 
+    override fun onStop() {
+        super.onStop()
+        PlayerViewExtension.releaseAllPlayers()
+    }
 
+    override fun onPause() {
+        super.onPause()
+        PlayerViewExtension.releaseAllPlayers()
+    }
 }
