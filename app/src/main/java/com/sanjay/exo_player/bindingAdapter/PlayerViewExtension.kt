@@ -11,9 +11,9 @@ import com.google.android.exoplayer2.trackselection.TrackSelectionArray
 import com.google.android.exoplayer2.ui.PlayerView
 
 /**
- * author : Sanjay Prajapat
- * email : sprajapat8331@gmail.com
- * github : https://github.com/sanjaydraws
+ * @author : Sanjay Prajapat
+ * @email : sprajapat8331@gmail.com
+ * @github : https://github.com/sanjaydraws
  *
  * */
 
@@ -22,12 +22,14 @@ class PlayerViewExtension {
         // to hold all player
         private var playersMap: MutableMap<Int, SimpleExoPlayer>  = mutableMapOf()
         private var lastPlayingVideoIndex:Int? = -1
-
         // to hold currentPlayer
         private  var currentPlayingVideo: Pair<Int, SimpleExoPlayer?>? = null
         // for get current and previous index
 
 
+        /**
+         * call when release all players
+         * */
         fun releaseAllPlayers(){
             playersMap.map {
                 it.value.stop()
@@ -89,7 +91,9 @@ class PlayerViewExtension {
             }
         }
 
-        fun playIndexThenPausePreviousPlayer(index: Int){
+        /** call when play current index player and pause previous player
+         * */
+        fun playCurrentPlayerThenPausePreviousPlayer(index: Int){
             if (playersMap.get(index)?.playWhenReady == false) {
                 pauseCurrentPlayingVideo()
                 playersMap.get(index)?.playWhenReady = true
@@ -126,16 +130,18 @@ class PlayerViewExtension {
             }
             try{
 
-                val mediaItem1 = MediaItem.Builder()
-                    .setUri(videoUrl)
-                    .setAdsConfiguration(MediaItem.AdsConfiguration.Builder(Uri.parse("http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4")).build()).build()
+//                val mediaItem1 = MediaItem.Builder()
+//                    .setUri(videoUrl)
+//                    .setAdsConfiguration(MediaItem.AdsConfiguration.Builder(Uri.parse("http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4")).build()).build()
+//                val mediaItem = MediaItem.fromUri(videoUrl)
+//
+
                 val mediaItem = MediaItem.fromUri(videoUrl)
-                simpleExoplayer.addMediaItem(mediaItem1)
-                simpleExoplayer?.addMediaItem(mediaItem) // add media item
+                simpleExoplayer.addMediaItem(mediaItem) // add media item
                 // When changing track, retain the latest frame instead of showing a black screen
                 setKeepContentOnPlayerReset(true)
                 //prepare url
-                simpleExoplayer?.prepare()
+                simpleExoplayer.prepare()
                 this.player = simpleExoplayer
             }catch (e:Exception){
                 e.printStackTrace()

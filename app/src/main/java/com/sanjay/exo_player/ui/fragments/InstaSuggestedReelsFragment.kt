@@ -42,7 +42,7 @@ class InstaSuggestedReelsFragment : BaseFragment() {
         // Inflate the layout for this fragment
         binding = FragmentInstaSuggestedReelsBinding.inflate(layoutInflater, container, false)
         binding?.apply {
-            lifecycleOwner = this@InstaSuggestedReelsFragment
+            this.lifecycleOwner = this@InstaSuggestedReelsFragment
             executePendingBindings()
         }
         return binding?.root
