@@ -64,8 +64,12 @@ class FacebookFragment : BaseFragment() {
 
     override fun setupListener() {
         pagerListener = object :ViewpagerPageListener(){
-            override fun onVisibleItem(index: Int) {
-                Log.d(TAG, "onVisibleItem: $index")
+            override fun onCurrentVisibleItem(index: Int?) {
+                Log.d(TAG, "onCurrentVisibleItem: $index")
+            }
+
+            override fun onCurrentVisibleItemState(@ScrollState state: Int?) {
+                Log.d(TAG, "onCurrentVisibleItemState: $state")
             }
         }
 
