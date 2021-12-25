@@ -23,7 +23,6 @@ import com.sanjay.exo_player.utils.ViewpagerPageListener
  */
 class FacebookFragment : BaseFragment() {
     var binding:FragmentFacebookBinding? = null
-    private lateinit var scrollListener: RecyclerViewScrollListener
     private lateinit var pagerListener:ViewpagerPageListener
 
     private val mFbVideosAdapter by lazy {
@@ -64,35 +63,13 @@ class FacebookFragment : BaseFragment() {
     }
 
     override fun setupListener() {
-        scrollListener = object : RecyclerViewScrollListener() {
-            override fun onItemIsFirstVisibleItem(index: Int) {
-                // play just visible item
-                if (index != -1) {
-                    PlayerViewExtension.pausePreviousPlayer(index)
-                    Log.d("SCROLL_LISTENER", "onItemIsFirstVisibleItem: $index")
-//                    PlayerViewExtension.playIndexThenPausePreviousPlayer(index)
-                }
+        pagerListener = object :ViewpagerPageListener(){
+            override fun onVisibleItem(index: Int) {
+                Log.d(TAG, "onVisibleItem: $index")
             }
         }
-//        binding?.viewPager?.addOnScrollListener(scrollListener)
 
-        var viewPagerPageChangeListener :ViewPager.OnPageChangeListener = object : ViewPager.OnPageChangeListener{
-            override fun onPageScrolled(
-                position: Int,
-                positionOffset: Float,
-                positionOffsetPixels: Int
-            ) {
-
-            }
-
-            override fun onPageSelected(position: Int) {
-                Toast.makeText(context, "$position", Toast.LENGTH_LONG).show()
-            }
-
-            override fun onPageScrollStateChanged(state: Int) {
-
-            }
-        }
+        binding?.viewPager?.registerOnPageChangeCallback(pagerListener)
     }
 
     override fun initObservers() {

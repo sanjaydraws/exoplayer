@@ -16,10 +16,13 @@ abstract class ViewpagerPageListener: ViewPager2.OnPageChangeCallback() {
         super.onPageScrolled(position, positionOffset, positionOffsetPixels)
         Log.d(TAG, "onPageScrolled: position:$position positionOffset${positionOffset}" +
                 "positionOffsetPixels $positionOffsetPixels")
+        onVisibleItem(position)
     }
     override fun onPageSelected(position: Int) {
         super.onPageSelected(position)
         Log.d(TAG, "onPageSelected: $position")
-
     }
+
+    abstract fun onVisibleItem(index: Int)
+
 }
