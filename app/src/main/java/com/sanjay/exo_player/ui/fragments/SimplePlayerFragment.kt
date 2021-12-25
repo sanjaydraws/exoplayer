@@ -2,16 +2,13 @@ package com.sanjay.exo_player.ui.fragments
 
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.sanjay.exo_player.R
 import com.sanjay.exo_player.VideoData
-import com.sanjay.exo_player.adapters.RecyclerViewScrollListener
+import com.sanjay.exo_player.utils.RecyclerViewScrollListener
 import com.sanjay.exo_player.adapters.VideosAdapter
 import com.sanjay.exo_player.bindingAdapter.PlayerViewExtension
-import com.sanjay.exo_player.databinding.FragmentHomeBinding
 import com.sanjay.exo_player.databinding.FragmentSimplePlayerBinding
 import com.sanjay.exo_player.ui.fragments.base.BaseFragment
 

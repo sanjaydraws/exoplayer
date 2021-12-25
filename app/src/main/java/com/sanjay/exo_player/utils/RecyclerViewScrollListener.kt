@@ -1,4 +1,4 @@
-package com.sanjay.exo_player.adapters
+package com.sanjay.exo_player.utils
 
 import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -62,4 +62,6 @@ abstract class RecyclerViewScrollListener : RecyclerView.OnScrollListener() {
             }
         }
     }
+
+
 }

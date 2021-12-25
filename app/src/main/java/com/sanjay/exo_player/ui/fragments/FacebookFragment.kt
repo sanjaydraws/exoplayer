@@ -8,16 +8,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.viewpager.widget.ViewPager
-import com.sanjay.exo_player.R
 import com.sanjay.exo_player.VideoData
-import com.sanjay.exo_player.adapters.FacebookVideoPagerAdapter
 import com.sanjay.exo_player.adapters.FbVideoAdapter
-import com.sanjay.exo_player.adapters.InstaSuggestedVideosAdapter
-import com.sanjay.exo_player.adapters.RecyclerViewScrollListener
+import com.sanjay.exo_player.utils.RecyclerViewScrollListener
 import com.sanjay.exo_player.bindingAdapter.PlayerViewExtension
 import com.sanjay.exo_player.databinding.FragmentFacebookBinding
-import com.sanjay.exo_player.databinding.FragmentHomeBinding
 import com.sanjay.exo_player.ui.fragments.base.BaseFragment
+import com.sanjay.exo_player.utils.ViewpagerPageListener
 
 /**
  * A simple [Fragment] subclass.
@@ -27,7 +24,7 @@ import com.sanjay.exo_player.ui.fragments.base.BaseFragment
 class FacebookFragment : BaseFragment() {
     var binding:FragmentFacebookBinding? = null
     private lateinit var scrollListener: RecyclerViewScrollListener
-
+    private lateinit var pagerListener:ViewpagerPageListener
 
     private val mFbVideosAdapter by lazy {
         FbVideoAdapter(ArrayList())
@@ -107,11 +104,11 @@ class FacebookFragment : BaseFragment() {
 
     fun getVideosList():ArrayList<VideoData>{
         val l:ArrayList<VideoData> = ArrayList()
-        l.add(VideoData(0, title = "Spiderman", url = "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4", thumbnail = ""))
-        l.add(VideoData(1, title = "ironman", url = "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4", thumbnail = ""))
-        l.add(VideoData(2, title = "Spiderman2", url = "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4", thumbnail = ""))
-        l.add(VideoData(3, title = "superman", url = "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4", thumbnail = ""))
-        l.add(VideoData(4, title = "no way home", url = "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4", thumbnail = ""))
+        l.add(VideoData(0, title = "Spiderman", url = "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4", thumbnail = ""))
+        l.add(VideoData(1, title = "ironman", url = "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4", thumbnail = ""))
+        l.add(VideoData(2, title = "Spiderman2", url = "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4", thumbnail = ""))
+        l.add(VideoData(3, title = "superman", url = "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4", thumbnail = ""))
+        l.add(VideoData(4, title = "no way home", url = "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4", thumbnail = ""))
         l.add(VideoData(5, title = "Avengers", url = "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4", thumbnail = ""))
         l.add(VideoData(6, title = "Avengers2", url = "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4", thumbnail = ""))
         l.add(VideoData(7, title = "Ironman2", url = "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4", thumbnail = ""))
