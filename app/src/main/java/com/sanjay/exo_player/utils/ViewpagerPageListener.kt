@@ -8,6 +8,7 @@ import androidx.viewpager2.widget.ViewPager2
 /**
  * @author sanjay Prajapat
  * time : 26-12-2021 12:00 Am
+ * blog: https://dev.to/sanjayprajapat
  * */
 
 abstract class ViewpagerPageListener: ViewPager2.OnPageChangeCallback() {

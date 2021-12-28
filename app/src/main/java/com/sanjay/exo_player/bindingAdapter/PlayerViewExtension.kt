@@ -63,7 +63,7 @@ class PlayerViewExtension {
         /**
          * to pause last playing video
          * */
-        fun pausePreviousPlayer(index: Int){
+        fun pausePreviousPlayer(index: Int? ){
             if(lastPlayingVideoIndex != index)
                 for(k in playersMap.keys){
                     playersMap[k]?.playWhenReady = false

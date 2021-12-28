@@ -66,6 +66,10 @@ class FacebookFragment : BaseFragment() {
         pagerListener = object :ViewpagerPageListener(){
             override fun onCurrentVisibleItem(index: Int?) {
                 Log.d(TAG, "onCurrentVisibleItem: $index")
+                if (index != -1) {
+                    index?.let { PlayerViewExtension.playCurrentPlayerThenPausePreviousPlayer(it) }
+//                    PlayerViewExtension.playIndexThenPausePreviousPlayer(index)
+                }
             }
 
             override fun onCurrentVisibleItemState(@ScrollState state: Int?) {

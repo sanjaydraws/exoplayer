@@ -30,6 +30,7 @@ class FacebookVideoPagerAdapter(var layouts:IntArray ): PagerAdapter() {
         val view = `object` as View
         container.removeView(view)
     }
+
     inner class VideoViewHolder(private val binding: ItemInstagramSuggestedReelsBinding): RecyclerView.ViewHolder(binding.root) {
         fun setupData(videoData: VideoData) {
             binding.videoPlayerView.loadVideo(videoUrl = videoData.url, item_index = layoutPosition)
