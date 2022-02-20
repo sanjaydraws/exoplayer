@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.sanjay.exo_player.VideoData
 import com.sanjay.exo_player.bindingAdapter.PlayerViewExtension.Companion.loadVideo
+import com.sanjay.exo_player.bindingAdapter.PlayerViewExtension.Companion.playAutoPlay
 import com.sanjay.exo_player.bindingAdapter.PlayerViewExtension.Companion.releaseRecycledPlayers
 import com.sanjay.exo_player.databinding.ItemVideoLayoutBinding
 
@@ -48,7 +49,7 @@ class VideosAdapter (var videosList: ArrayList<VideoData>) :
     inner class VideoViewHolder(private val binding: ItemVideoLayoutBinding): RecyclerView.ViewHolder(binding.root) {
         fun setupData(videoData: VideoData) {
 //            binding.title.text = videoData.title
-            binding.videoPlayerView.loadVideo("http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4", item_index = layoutPosition)
+            binding.videoPlayerView.playAutoPlay("http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4", item_index = layoutPosition)
 
 
         }

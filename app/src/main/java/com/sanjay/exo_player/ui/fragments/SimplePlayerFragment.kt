@@ -65,10 +65,12 @@ class SimplePlayerFragment : BaseFragment() {
             override fun onItemIsFirstVisibleItem(index: Int) {
                 // play just visible item
                 if (index != -1) {
-                    PlayerViewExtension.pausePreviousPlayer(index)
-                    Log.d("SCROLL_LISTENER", "onItemIsFirstVisibleItem: $index")
-//                    PlayerViewExtension.playIndexThenPausePreviousPlayer(index)
+//                    PlayerViewExtension.pausePreviousPlayer(index)
+//                    Log.d("SCROLL_LISTENER", "onItemIsFirstVisibleItem: $index")
+                    PlayerViewExtension.autoPlayCurrentVideo(index)
                 }
+                Log.d("SCROLL_LISTENER", "onItemIsFirstVisibleItem: $index")
+
             }
 
         }

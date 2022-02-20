@@ -22,6 +22,7 @@ abstract class RecyclerViewScrollListener : RecyclerView.OnScrollListener() {
             require(manager is LinearLayoutManager) { "Expected recyclerview to have linear layout manager" }
             val mLayoutManager = manager
             visibleItemCount = mLayoutManager.childCount
+
             Log.d(TAG, "onScrolled: $visibleItemCount")
 
             firstVisibleItem = mLayoutManager.findFirstCompletelyVisibleItemPosition()
@@ -58,7 +59,6 @@ abstract class RecyclerViewScrollListener : RecyclerView.OnScrollListener() {
             }
             RecyclerView.SCROLL_STATE_SETTLING ->{
                 Log.d(TAG, "onScrollStateChanged: SCROLL_STATE_SETTLING")
-
             }
         }
     }
